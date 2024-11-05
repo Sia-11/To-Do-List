@@ -5,7 +5,7 @@ import { FaEdit, FaStar } from 'react-icons/fa';
 import SortOptions from './SortOptions';
 
 // Manages and displays the list of tasks
-const TodoList = ({ tasks, onDeleteTask, onToggleTask, onToggleImportant, onReorderTask, onEditTask, editingTaskId, setEditingTaskId, sortBy, setSortBy }) => {
+const TodoList = ({ tasks, isDarkMode, onDeleteTask, onToggleTask, onToggleImportant, onReorderTask, onEditTask, editingTaskId, setEditingTaskId, sortBy, setSortBy }) => {
   const [editText, setEditText] = useState(''); // Temporary edit text state
 
   const startEditing = (task) => {
@@ -71,8 +71,8 @@ const TodoList = ({ tasks, onDeleteTask, onToggleTask, onToggleImportant, onReor
                 type="text"
                 value={editText}
                 onChange={(e) => setEditText(e.target.value)}
-                className="flex-1 px-2 py-1 rounded border border-gray-300"
-              />
+                className={`flex-1 px-2 py-1 rounded border ${isDarkMode ? 'bg-gray-700 text-white border-gray-500' : 'bg-white text-gray-900 border-gray-300'}`}
+                />
             ) : (
               <span className={`flex-1 ${task.completed ? 'line-through text-gray-500' : 'text-gray-900'}`}>
                 {task.text}
