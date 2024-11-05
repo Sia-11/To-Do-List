@@ -1,10 +1,23 @@
 // src/components/TodoList.js
 
-import { FaStar } from 'react-icons/fa';
+import { useState } from 'react';
+import { FaEdit, FaStar } from 'react-icons/fa';
 import SortOptions from './SortOptions';
 
 // Manages and displays the list of tasks
-const TodoList = ({ tasks, onDeleteTask, onToggleTask, onToggleImportant, onReorderTask, sortBy, setSortBy }) => {
+const TodoList = ({ tasks, onDeleteTask, onToggleTask, onToggleImportant, onReorderTask, onEditTask, editingTaskId, setEditingTaskId, sortBy, setSortBy }) => {
+  const [editText, setEditText] = useState(''); // Temporary edit text state
+
+  const startEditing = (task) => {
+    setEditingTaskId(task.id);
+    setEditText(task.text);
+  };
+
+  const saveEdit = (taskId) => {
+    onEditTask(taskId, editText);
+    setEditingTaskId(null);
+  };
+  
   const sortedTasks = [...tasks].sort((a, b) => {
     if (sortBy === 'completed') return b.completed - a.completed;
     if (sortBy === 'incomplete') return a.completed - b.completed;
@@ -52,15 +65,33 @@ const TodoList = ({ tasks, onDeleteTask, onToggleTask, onToggleImportant, onReor
               )}
             </span>
 
-            {/* Task Text */}
-            <span className={`flex-1 ${task.completed ? 'line-through text-gray-500' : 'text-gray-900'}`}>
-              {task.text}
-            </span>
+            {/* Editable Text or Task Text */}
+            {editingTaskId === task.id ? (
+              <input
+                type="text"
+                value={editText}
+                onChange={(e) => setEditText(e.target.value)}
+                className="flex-1 px-2 py-1 rounded border border-gray-300"
+              />
+            ) : (
+              <span className={`flex-1 ${task.completed ? 'line-through text-gray-500' : 'text-gray-900'}`}>
+                {task.text}
+              </span>
+            )}
 
             {/* Important Task Icon */}
             <span onClick={() => onToggleImportant(task.id)} className="mr-2 cursor-pointer">
               <FaStar className={`h-5 w-5 ${task.important ? 'text-yellow-500' : 'text-gray-300'}`} />
             </span>
+
+            {/* Edit Icon */}
+            {editingTaskId === task.id ? (
+              <button onClick={() => saveEdit(task.id)} className="text-blue-500 ml-2">
+                Save
+              </button>
+            ) : (
+              <FaEdit onClick={() => startEditing(task)} className="text-gray-500 cursor-pointer mx-2" />
+            )}
 
             {/* Reorder Buttons */}
             <button onClick={() => handleReorder(index, -1)} className="text-gray-400 mx-1">↑</button>
