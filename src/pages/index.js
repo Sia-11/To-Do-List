@@ -9,6 +9,7 @@ const Home = () => {
   const [tasks, setTasks] = useState([]);
   const [isDarkMode, setIsDarkMode] = useState(false);
   const [sortBy, setSortBy] = useState('');
+  const [editingTaskId, setEditingTaskId] = useState(null); // Track task being edited
 
   useEffect(() => {
     const savedTasks = JSON.parse(localStorage.getItem('tasks')) || [];
@@ -22,6 +23,15 @@ const Home = () => {
   const addTask = (text) => {
     const newTask = { id: Date.now(), text, completed: false, important: false };
     setTasks((prevTasks) => [...prevTasks, newTask]);
+  };
+
+  // Function to edit a task from the list
+  const editTask = (taskId, newText) => {
+    setTasks((prevTasks) =>
+      prevTasks.map((task) =>
+        task.id === taskId ? { ...task, text: newText } : task
+      )
+    );
   };
 
   // Function to delete a task from the list
@@ -89,6 +99,9 @@ const Home = () => {
           onToggleTask={toggleTaskCompletion}
           onToggleImportant={toggleTaskImportant}
           onReorderTask={reorderTask}
+          onEditTask={editTask} // Pass editTask function
+          editingTaskId={editingTaskId}
+          setEditingTaskId={setEditingTaskId}
           sortBy={sortBy}
           setSortBy={setSortBy}
         />
