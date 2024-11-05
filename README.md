@@ -9,6 +9,20 @@ This app allows users to:
 - Sort and reorder tasks
 - Persist data locally
 
+
+## Folder Structure
+Here’s a high-level view of the file structure to help you locate the files:
+- **src/**
+  - **components/**
+    - **TodoList.js:** Task display and manipulation.
+    - **TodoInput.js:** New Task Addition.
+    - **SortOptions.js:** Sorting options for tasks. 
+  - **pages/**
+    - **index.js:** Main layout file for the app. 
+  - **styles/**
+    - **globals.css:** Contains CSS files if applicable.
+
+
 ## Main Features and Files
 Here are the key files to check for each feature in the project:
 
@@ -27,21 +41,6 @@ Here are the key files to check for each feature in the project:
 - **Main Application Layout**
   - **File:** `src/pages/index.js`
   - **Purpose:** The main layout of the application, combining all components.
-
-## Folder Structure
-
-Here’s a high-level view of the file structure to help you locate the files:
-
-- **src/**
-  - **components/**
-    - **TodoList.js:** Task display and manipulation.
-    - **TodoInput.js:** New Task Addition.
-    - **SortOptions.js:** Sorting options for tasks. 
-  - **pages/**
-    - **index.js:** Main layout file for the app. 
-  - **styles/**
-    - **globals.css:** Contains CSS files if applicable.
-
 
 
 ## Running the Project
