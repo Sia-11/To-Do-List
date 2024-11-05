@@ -32,7 +32,15 @@ Here are the key files to check for each feature in the project:
 
 Here’s a high-level view of the file structure to help you locate the files:
 
-src/ components/ TodoList.js # Task display and manipulation SortOptions.js # Sorting options for tasks DarkModeToggle.js # Dark mode toggle feature pages/ index.js # Main layout file for the app styles/ # Contains CSS files if applicable
+-**src/**
+  -**components/**
+    -**TodoList.js:** Task display and manipulation.
+    -**TodoInput.js:** New Task Addition.
+    -**SortOptions.js:** Sorting options for tasks 
+  -**pages/**
+    -**index.js:** Main layout file for the app 
+  -**styles/**
+    -**globals.css:** Contains CSS files if applicable
 
 
 
