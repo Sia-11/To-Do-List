@@ -29,35 +29,10 @@ Here are the key files to check for each feature in the project:
   - **Purpose:** The main layout of the application, combining all components.
 
 ## Folder Structure
+
 Here’s a high-level view of the file structure to help you locate the files:
 
-my-todo-app/
-│
-├── public/               # Public assets (images, icons, etc.)
-│   └── favicon.ico
-│
-├── src/                  # Source files for the application
-│   ├── components/       # Reusable components
-│   │   ├── TodoInput.js            # Input component for adding tasks
-│   │   ├── TodoList.js             # Displays the list of tasks
-│   │   ├── SortOptions.js          # Sorting options for tasks
-│   │   └── DarkModeToggle.js       # Dark mode toggle feature
-│   │
-│   ├── pages/            # Page components for routing
-│   │   └── index.js               # Main page layout for the app
-│   │
-│   ├── styles/           # Stylesheets (CSS files)
-│   │   └── styles.css             # Main styles for the application
-│   │
-│   ├── utils/            # Utility functions (if any)
-│   │   └── helper.js              # Helper functions for tasks
-│   │
-│   └── App.js            # Main application component
-│
-├── package.json          # Project dependencies and scripts
-├── README.md             # Documentation for the project
-└── .gitignore            # Files and folders to ignore in version control
-
+src/ components/ TodoList.js # Task display and manipulation SortOptions.js # Sorting options for tasks DarkModeToggle.js # Dark mode toggle feature pages/ index.js # Main layout file for the app styles/ # Contains CSS files if applicable
 
 
 
